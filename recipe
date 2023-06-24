@@ -1,0 +1,45 @@
+class Recipe:
+    def __init__(self, name, ingredients, instructions):
+        self.name = name
+        self.ingredients = ingredients
+        self.instructions = instructions
+
+    def display_recipe(self):
+        print(f"Recipe: {self.name}")
+        print("Ingredients:")
+        for ingredient in self.ingredients:
+            print(f"- {ingredient}")
+        print("Instructions:")
+        for step, instruction in enumerate(self.instructions, start=1):
+            print(f"{step}. {instruction}")
+        print()
+
+class RecipeBox:
+    def __init__(self, name):
+        self.name = name
+        self.recipes = []
+
+    def add_recipe(self, recipe):
+        self.recipes.append(recipe)
+
+    def display_recipes(self):
+        if not self.recipes:
+            print("No recipes in the recipe box.")
+        else:
+            print(f"Recipe Box: {self.name}")
+            for recipe in self.recipes:
+                recipe.display_recipe()
+
+if __name__ == '__main__':
+    recipe_box = RecipeBox("My Recipe Box")
+
+    recipe1 = Recipe("Spaghetti Bolognese", ["spaghetti", "ground beef", "tomatoes", "onion", "garlic"], ["Cook spaghetti according to package instructions.", "Brown the ground beef in a large pan.", "Add the onion and garlic, cook until softened.", "Add the tomatoes and simmer for 20 minutes.", "Serve the sauce over the cooked spaghetti."])
+    recipe_box.add_recipe(recipe1)
+
+    recipe2 = Recipe("Chicken Stir Fry", ["chicken breast", "mixed vegetables", "soy sauce", "sesame oil"], ["Cut the chicken into small pieces.", "Heat sesame oil in a pan, add the chicken and cook until browned.", "Add the mixed vegetables and stir-fry until cooked.", "Add soy sauce and cook for another minute.", "Serve over rice or noodles."])
+    recipe_box.add_recipe(recipe2)
+
+    recipe3 = Recipe("Chocolate Chip Cookies", ["butter", "sugar", "eggs", "flour", "chocolate chips"], ["Preheat the oven to 375°F.", "In a bowl, cream together the butter and sugar.", "Beat in the eggs one at a time.", "Gradually mix in the flour.", "Stir in the chocolate chips.", "Drop spoonfuls of dough onto a baking sheet.", "Bake for 8-10 minutes or until golden brown."])
+    recipe_box.add_recipe(recipe3)
+
+    recipe_box.display_recipes()
